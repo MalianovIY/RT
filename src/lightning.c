@@ -28,7 +28,7 @@ t_light	init_light(t_int4 id, t_light_type type, t_float4 vec, float intns)
 **       d ray vector, norm and [object_id, specular, max value, i].          *
 */
 
-float	specular_and_diffuse(float intens, t_mat4 t, t_float4 l, t_obj_type x)
+float	specular_and_diffuse(float intens, t_mat4 t, t_float4 l)
 {
 	float		nl;
 	float		rv;
@@ -93,7 +93,7 @@ float	lighting(t_rt *rt, t_mat4 t, t_obj_type x)
 		}
 		if (shadow(rt, t, l, x))
 			continue ;
-		t.v[3].v[3] = specular_and_diffuse(rt->obj.lights[j].intn, t, l, x);
+		t.v[3].v[3] = specular_and_diffuse(rt->obj.lights[j].intn, t, l);
 	}
 	return (t.v[3].v[3]);
 }
