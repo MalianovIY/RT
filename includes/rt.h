@@ -86,7 +86,7 @@ typedef struct		s_plane
 **                    id, global_id, color and specular                       *
 **                              for this sphere.                              *
 **                 t_float4 data contains information about                   *
-**                           reflection and radius				              *
+**                           reflection and radius                            *
 **                              for this sphere.                              *
 */
 
@@ -158,11 +158,13 @@ void				image_to_win(t_rt *rt);
 
 int					deal_key(int key, void *param);
 
+int					close_win(void *param);
+
 t_int4				trace_ray(t_rt *rt, t_mat4 t);
 
 void				calc(t_rt *rt);
 
-void				init_scene_prog(t_rt *rt);
+void				init_scene(t_rt *rt, char *c);
 
 t_light				init_light(t_int4 id, t_light_type type, t_float4 vec,
 								float intens);
@@ -202,5 +204,27 @@ t_mat4				get_pn_cone(t_rt *rt, t_mat4 t);
 t_mat4				get_pn_cylinder(t_rt *rt, t_mat4 t);
 
 t_mat4				get_pn_plane(t_rt *rt, t_mat4 t);
+
+t_float4			split_float4(char *s, char c);
+
+void				parse_cone(char **splits, int i, t_cone *t, char c);
+
+void				parse_sphere(char **splits, int i, t_sphere *t, char c);
+
+void				parse_cylinder(char **splits, int i, t_cylinder *t, char c);
+
+void				parse_plane(char **splits, int i, t_plane *t, char c);
+
+void				parse_light(char **splits, int i, t_light *t, char c);
+
+void				read_cone(t_rt *rt, char **splits, char c, int *x);
+
+void				read_sphere(t_rt *rt, char **splits, char c, int *x);
+
+void				read_cylinder(t_rt *rt, char **splits, char c, int *x);
+
+void				read_plane(t_rt *rt, char **splits, char c, int *x);
+
+void				read_light(t_rt *rt, char **splits, char c, int *x);
 
 #endif

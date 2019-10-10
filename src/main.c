@@ -67,13 +67,13 @@ int		main(int argc, char *argv[])
 {
 	t_rt		rt;
 
-	if (argc == 1)
+	if (argc == 2)
 	{
-		argv[0][0] = argv[0][0];
-		init_scene_prog(&rt);
+		init_scene(&rt, argv[1]);
 		init_mlx(&rt);
 		calc(&rt);
 		mlx_hook(rt.mlx.win, 2, 5, deal_key, &rt);
+		mlx_hook(rt.mlx.win, 17, 5, close_win, &rt);
 		mlx_loop(rt.mlx.mlx);
 	}
 	return (0);

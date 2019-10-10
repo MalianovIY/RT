@@ -9,7 +9,7 @@ project(RT C)
 
 set(CMAKE_C_STANDARD 99)
 
-#add_compile_options(-Wall -Werror -Wextra)
+add_compile_options(-Wall -Werror -Wextra)
 
 include_directories("includes")
 include_directories("libft/includes")

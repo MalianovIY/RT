@@ -12,6 +12,12 @@
 
 #include "rt.h"
 
+int		close_win(void *param)
+{
+	(void)param;
+	exit(0);
+}
+
 void	rotation_pos(t_rt *rt, int key, float angle)
 {
 	if (key == 12)
@@ -74,7 +80,7 @@ int		deal_key(int key, void *param)
 
 	rt = (t_rt *)param;
 	if (key == 53 || key == 13 || key == 1 || key == 2 || key == 0
-			|| key == 116 || key == 121 || key == 12)
+			|| key == 116 || key == 121)
 		move(rt, key);
 	else if (key == 12 || key == 123 || key == 125)
 		rotation_pos(rt, key, M_PI / 18);

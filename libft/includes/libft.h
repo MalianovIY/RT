@@ -70,7 +70,11 @@ char				*ft_strsub(const char *c, unsigned int s, size_t l);
 
 char				*ft_strtrim(const char *c);
 
+double				ft_atof(char *str);
+
 int					ft_atoi(const char *str);
+
+int					ft_atoi_base(const char *str, int str_base);
 
 int					ft_chrcnt(char *s, char c);
 
