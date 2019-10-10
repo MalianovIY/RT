@@ -99,4 +99,5 @@ void		init_scene(t_rt *rt, char *file)
 	read_plane(rt, splits, ',', &i[0]);
 	read_light(rt, splits, ',', &i[0]);
 	ft_free2d((void ***)&splits);
+	init_mlx(rt);
 }

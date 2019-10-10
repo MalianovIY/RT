@@ -56,10 +56,12 @@ void	rotation_neg(t_rt *rt, int key, float angle)
 	}
 }
 
-void	move(t_rt *rt, int key)
+void	move_control(t_rt *rt, int key)
 {
 	if (key == 53)
 		exit(0);
+	else if (key == 36)
+		init_scene(rt, rt->filename);
 	else if (key == 13)
 		rt->o.v[2] += 1;
 	else if (key == 1)
@@ -80,8 +82,8 @@ int		deal_key(int key, void *param)
 
 	rt = (t_rt *)param;
 	if (key == 53 || key == 13 || key == 1 || key == 2 || key == 0
-			|| key == 116 || key == 121)
-		move(rt, key);
+			|| key == 116 || key == 121 || key == 36)
+		move_control(rt, key);
 	else if (key == 12 || key == 123 || key == 125)
 		rotation_pos(rt, key, M_PI / 18);
 	else if (key == 14 || key == 124 || key == 126)

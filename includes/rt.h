@@ -142,7 +142,7 @@ typedef struct		s_obj
 typedef struct		s_rt
 {
 	t_mlx			mlx;
-	t_int4			**image;
+	char			filename[1024];
 	t_obj			obj;
 	t_int4			scr;
 	t_float4		cnv;

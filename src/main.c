@@ -69,11 +69,11 @@ int		main(int argc, char *argv[])
 
 	if (argc == 2)
 	{
-		init_scene(&rt, argv[1]);
-		init_mlx(&rt);
+		rt.mlx.win = NULL;
+		rt.mlx.mlx = NULL;
+		ft_strcpy(rt.filename, argv[1]);
+		init_scene(&rt, rt.filename);
 		calc(&rt);
-		mlx_hook(rt.mlx.win, 2, 5, deal_key, &rt);
-		mlx_hook(rt.mlx.win, 17, 5, close_win, &rt);
 		mlx_loop(rt.mlx.mlx);
 	}
 	return (0);

@@ -55,11 +55,17 @@ void	draw_point(t_rt *rt, int x, int y, t_int4 p)
 
 void	init_mlx(t_rt *rt)
 {
-	rt->mlx.mlx = mlx_init();
+	if (rt->mlx.mlx != NULL)
+		mlx_destroy_window(rt->mlx.mlx, rt->mlx.win);
+	else
+		rt->mlx.mlx = mlx_init();
+
 	rt->mlx.win = mlx_new_window(rt->mlx.mlx, rt->scr.v[0], rt->scr.v[1], "RT");
 	rt->mlx.img = mlx_new_image(rt->mlx.mlx, rt->scr.v[0], rt->scr.v[1]);
 	rt->mlx.string = mlx_get_data_addr(rt->mlx.img,
 			&(rt->mlx.bit_per_pix), &(rt->mlx.size_len), &(rt->mlx.endian));
+	mlx_hook(rt->mlx.win, 2, 5, deal_key, rt);
+	mlx_hook(rt->mlx.win, 17, 5, close_win, rt);
 }
 
 void	image_to_win(t_rt *rt)
