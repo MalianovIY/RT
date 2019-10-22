@@ -14,6 +14,6 @@
 
 t_float4	gm_vec_ortog(t_float4 v1, t_float4 v2)
 {
-	return(gm_vec_subtract(v1, gm_vec_alp_mult(v2, gm_vec_dot(v1, v2)
+	return (gm_vec_subtract(v1, gm_vec_alp_mult(v2, gm_vec_dot(v1, v2)
 													/ gm_vec_len_sqr(v2))));
 }

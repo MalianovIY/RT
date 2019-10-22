@@ -22,9 +22,9 @@ static int	ft_iswhitespace(char const c)
 
 static int	base(int c, int base)
 {
-	char str[17];
-	char str2[17];
-	int  i;
+	char	str[17];
+	char	str2[17];
+	int		i;
 
 	ft_strcpy(str, "0123456789abcdef");
 	ft_strcpy(str2, "0123456789ABCDEF");
@@ -37,9 +37,9 @@ static int	base(int c, int base)
 
 int			ft_atoi_base(const char *str, int str_base)
 {
-	int nb;
-	int p;
-	int i;
+	int	nb;
+	int	p;
+	int	i;
 
 	i = 0;
 	nb = 0;

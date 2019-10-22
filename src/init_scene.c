@@ -59,10 +59,13 @@ void		read_camera(t_rt *rt, char **splits, char c)
 {
 	int		i;
 
-	rt->o = gm_init_float(0, 1, -2, 0);
-	rt->t = gm_mat_init_identity();
-	rt->scr = gm_init_int(320, 180, 160, 90);
-	rt->cnv = gm_init_float(0.001f * 16.f / 9.f, 0.001f, 0.001, 0);
+	if (rt->mlx.mlx == NULL)
+	{
+		rt->o = gm_init_float(0, 1, 0, 0);
+		rt->t = gm_mat_init_identity();
+		rt->scr = gm_init_int(320, 180, 160, 90);
+		rt->cnv = gm_init_float(0.001f * 16.f / 9.f, 0.001f, 0.001, 0);
+	}
 	i = -1;
 	while (splits[++i])
 		if (ft_strstr(splits[i], "camera:"))
@@ -71,7 +74,7 @@ void		read_camera(t_rt *rt, char **splits, char c)
 				if (splits[i][0] == '\t')
 					parse_camera(rt, splits, i, c);
 				else
-					break ;
+					break;
 		}
 }
 
@@ -85,6 +88,8 @@ void		init_scene(t_rt *rt, char *file)
 	if ((i[1] = open(file, O_RDONLY)) < 3)
 		exit(0);
 	i[0] = read(i[1], buf, 99999);
+	if (i[0] < 7)
+		exit(0);
 	buf[i[0]] = 0;
 	close(i[1]);
 	i[0] = 0;
