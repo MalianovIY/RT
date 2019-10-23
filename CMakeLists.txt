@@ -13,6 +13,7 @@ add_compile_options(-Wall -Werror -Wextra)
 
 include_directories("includes")
 include_directories("libft/includes")
+include_directories("libgm/include")
 link_directories(/usr/local/lib)
 link_libraries(mlx)
 find_library(OPEN_GL OpenGL)
