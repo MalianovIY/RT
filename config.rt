@@ -98,6 +98,6 @@ plane:
 	data: 0.0009, 0, 0, 0
 -
 camera:
-	center: 0, 0, 0, 0
-	screen: 1600, 900
+	center: 0, 1, 0, 0
+	screen: 160, 90
 -

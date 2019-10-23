@@ -18,5 +18,5 @@ link_libraries(mlx)
 find_library(OPEN_GL OpenGL)
 find_library(APP_KIT AppKit)
 
-add_executable(RT ${SOURCES} ${HEADERS} ${HEADERS1} ${SOURCES1} ${HEADERS2} ${SOURCES2} src/cone.c src/cylinder.c src/plane.c src/get_pixel_color.c src/lightning.c libgm/gm_vec_reflect.c src/image.c src/control.c libgm/gm_vec_vec_rotate.c src/init_scene.c libgm/gm_vec_ortog.c)
+add_executable(RT ${SOURCES} ${HEADERS} ${HEADERS1} ${SOURCES1} ${HEADERS2} ${SOURCES2})
 target_link_libraries(RT ${OPEN_GL} ${APP_KIT})
