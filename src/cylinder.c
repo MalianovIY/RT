@@ -6,11 +6,11 @@
 /*   By: ahorker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/30 04:56:41 by ahorker           #+#    #+#             */
-/*   Updated: 2019/09/30 04:56:41 by ahorker          ###   ########.fr       */
+/*   Updated: 2019/10/28 08:02:50 by sbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/rt.h"
+#include "rt.h"
 
 t_cylinder	init_cylinder(t_int4 id, t_float4 center,
 		t_float4 norm, t_float4 data)

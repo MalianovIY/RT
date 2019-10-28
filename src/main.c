@@ -6,7 +6,7 @@
 /*   By: ahorker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/30 03:59:58 by ahorker           #+#    #+#             */
-/*   Updated: 2019/09/30 03:59:58 by ahorker          ###   ########.fr       */
+/*   Updated: 2019/10/28 09:07:51 by sbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,12 @@ void	calc(t_rt *rt)
 	image_to_win(rt);
 }
 
+void	error_exit(void)
+{
+	ft_putstr("config file doesn't exist\n");
+	exit(0);
+}
+
 int		main(int argc, char *argv[])
 {
 	t_rt		rt;
@@ -76,5 +82,7 @@ int		main(int argc, char *argv[])
 		calc(&rt);
 		mlx_loop(rt.mlx.mlx);
 	}
+	else
+		ft_putstr("usage: need config file.\n");
 	return (0);
 }

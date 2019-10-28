@@ -6,11 +6,11 @@
 /*   By: ahorker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/05 22:13:08 by ahorker           #+#    #+#             */
-/*   Updated: 2019/10/05 22:13:08 by ahorker          ###   ########.fr       */
+/*   Updated: 2019/10/28 08:03:25 by sbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/rt.h"
+#include "rt.h"
 
 t_light	init_light(t_int4 id, t_light_type type, t_float4 vec, float intns)
 {

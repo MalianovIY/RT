@@ -6,11 +6,11 @@
 /*   By: ahorker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/10 03:01:27 by ahorker           #+#    #+#             */
-/*   Updated: 2019/10/10 03:01:27 by ahorker          ###   ########.fr       */
+/*   Updated: 2019/10/28 08:02:17 by sbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/rt.h"
+#include "rt.h"
 
 void	read_cone(t_rt *rt, char **splits, char c, int *x)
 {

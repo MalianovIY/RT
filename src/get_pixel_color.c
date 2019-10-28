@@ -6,11 +6,11 @@
 /*   By: ahorker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/05 22:04:43 by ahorker           #+#    #+#             */
-/*   Updated: 2019/10/05 22:04:43 by ahorker          ###   ########.fr       */
+/*   Updated: 2019/10/28 08:03:12 by sbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/rt.h"
+#include "rt.h"
 
 t_mat4		get_pn(t_rt *rt, t_mat4 t, t_obj_type x)
 {

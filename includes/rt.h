@@ -6,15 +6,15 @@
 /*   By: ahorker <ahorker@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/20 22:19:38 by ahorker           #+#    #+#             */
-/*   Updated: 2019/02/06 19:02:05 by ahorker          ###   ########.fr       */
+/*   Updated: 2019/10/28 09:08:04 by sbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef RT_H
 # define RT_H
 
-# include "../libft/includes/libft.h"
-# include "../libgm/include/libgm.h"
+# include "./libft.h"
+# include "./libgm.h"
 
 # include <mlx.h>
 # include <math.h>
@@ -226,5 +226,7 @@ void				read_cylinder(t_rt *rt, char **splits, char c, int *x);
 void				read_plane(t_rt *rt, char **splits, char c, int *x);
 
 void				read_light(t_rt *rt, char **splits, char c, int *x);
+
+void				error_exit(void);
 
 #endif

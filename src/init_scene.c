@@ -6,7 +6,7 @@
 /*   By: ahorker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/05 23:00:20 by ahorker           #+#    #+#             */
-/*   Updated: 2019/10/05 23:00:20 by ahorker          ###   ########.fr       */
+/*   Updated: 2019/10/28 09:08:08 by sbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ void		read_camera(t_rt *rt, char **splits, char c)
 				if (splits[i][0] == '\t')
 					parse_camera(rt, splits, i, c);
 				else
-					break;
+					break ;
 		}
 }
 
@@ -86,7 +86,7 @@ void		init_scene(t_rt *rt, char *file)
 
 	ft_bzero(rt->obj.count_obj, 5 * sizeof(int));
 	if ((i[1] = open(file, O_RDONLY)) < 3)
-		exit(0);
+		error_exit();
 	i[0] = read(i[1], buf, 99999);
 	if (i[0] < 7)
 		exit(0);

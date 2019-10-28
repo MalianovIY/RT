@@ -6,7 +6,7 @@
 /*   By: ahorker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/05 22:32:46 by ahorker           #+#    #+#             */
-/*   Updated: 2019/10/05 22:32:46 by ahorker          ###   ########.fr       */
+/*   Updated: 2019/10/28 08:19:50 by sbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,6 @@ void	init_mlx(t_rt *rt)
 		mlx_destroy_window(rt->mlx.mlx, rt->mlx.win);
 	else
 		rt->mlx.mlx = mlx_init();
-
 	rt->mlx.win = mlx_new_window(rt->mlx.mlx, rt->scr.v[0], rt->scr.v[1], "RT");
 	rt->mlx.img = mlx_new_image(rt->mlx.mlx, rt->scr.v[0], rt->scr.v[1]);
 	rt->mlx.string = mlx_get_data_addr(rt->mlx.img,
