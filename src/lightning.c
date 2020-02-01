@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "rt.h"
+#include "../includes/rt.h"
 
 t_light	init_light(t_int4 id, t_light_type type, t_float4 vec, float intns)
 {

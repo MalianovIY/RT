@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "rt.h"
+#include "../includes/rt.h"
 
 t_float4	split_float4(char *s, char c)
 {
@@ -102,6 +102,7 @@ void		init_scene(t_rt *rt, char *file)
 	read_cone(rt, splits, ',', &i[0]);
 	read_cylinder(rt, splits, ',', &i[0]);
 	read_plane(rt, splits, ',', &i[0]);
+	read_torus(rt, splits, ',', &i[0]);
 	read_light(rt, splits, ',', &i[0]);
 	ft_free2d((void ***)&splits);
 	init_mlx(rt);

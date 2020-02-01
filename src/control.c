@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "rt.h"
+#include "../includes/rt.h"
 
 int		close_win(void *param)
 {
@@ -85,9 +85,9 @@ int		deal_key(int key, void *param)
 			|| key == 116 || key == 121 || key == 36)
 		move_control(rt, key);
 	else if (key == 12 || key == 123 || key == 125)
-		rotation_pos(rt, key, M_PI / 18);
+		rotation_pos(rt, key, M_PI / 36);
 	else if (key == 14 || key == 124 || key == 126)
-		rotation_neg(rt, key, -M_PI / 18);
+		rotation_neg(rt, key, -M_PI / 36);
 	rt->mlx.img = mlx_new_image(rt->mlx.mlx, rt->scr.v[0], rt->scr.v[1]);
 	rt->mlx.string = mlx_get_data_addr(rt->mlx.img,
 			&(rt->mlx.bit_per_pix), &(rt->mlx.size_len), &(rt->mlx.endian));

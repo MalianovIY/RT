@@ -10,7 +10,77 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "rt.h"
+#include "../includes/rt.h"
+
+t_d_obj get_dist(t_rt *rt, t_float4 p)
+{
+	int			i;
+	float		s, s1;
+	t_d_obj		res;
+	t_float4	oc;
+
+	i = -1;
+	res.id = -1;
+	res.obj = none;
+	res.ro = INF;
+	while (++i < rt->obj.count_obj[0])
+	{
+		s = gm_vec_dot(gm_vec_subtract(p,  rt->obj.planes[i].point), rt->obj.planes[i].norm); //gm_vec_len(gm_vec_subtract(p, rt->obj.spheres[i].center));
+		res.ro = s < res.ro ? s : res.ro;
+		res.id = s == res.ro ? i : res.id;
+		res.obj = s == res.ro ? plane : res.obj;
+	}
+	i = -1;
+	while (++i < rt->obj.count_obj[1])
+	{
+		s = gm_vec_len(gm_vec_mult(gm_vec_subtract(p, rt->obj.cylinders[i].center), rt->obj.cylinders[i].norm)) - rt->obj.cylinders[i].data.v[1];
+		res.ro = s < res.ro ? s : res.ro;
+		res.id = s == res.ro ? i : res.id;
+		res.obj = s == res.ro ? cylinder : res.obj;
+	}
+	i = -1;
+	while (++i < rt->obj.count_obj[2])
+	{
+		s = gm_vec_len(gm_vec_subtract(rt->obj.spheres[i].center, p)) - rt->obj.spheres[i].data.v[1];
+		res.ro = s < res.ro ? s : res.ro;
+		res.id = s == res.ro ? i : res.id;
+		res.obj = s == res.ro ? sphere : res.obj;
+	}
+	i = -1;
+	while (++i < rt->obj.count_obj[3])
+	{
+		oc = gm_vec_subtract(rt->obj.cones[i].center, p);
+		s = gm_vec_len(gm_vec_mult(oc, gm_vec_normalize(gm_vec_vec_rotate(rt->obj.cones->norm, gm_vec_mult(oc,rt->obj.cones[i].norm), -atan(rt->obj.cones[i].data.v[1]) / 2))));
+		s1 = gm_vec_len(gm_vec_mult(oc, gm_vec_normalize(gm_vec_vec_rotate(rt->obj.cones->norm, gm_vec_mult(oc,rt->obj.cones[i].norm), atan(rt->obj.cones[i].data.v[1]) / 2))));
+		s = s1 > s ? s : s1;//its doest work
+		res.ro = s < res.ro ? s : res.ro;
+		res.id = s == res.ro ? i : res.id;
+		res.obj = s == res.ro ? cone : res.obj;
+	}
+	return (res);
+}
+
+t_int4	ray_march(t_rt *rt, t_mat4 t)
+{
+	float	ro;
+	t_d_obj	ds;
+	int		i;
+
+	ro = 0;
+	i = -1;
+	while (++i < MAX_STEPS)
+	{
+		ds = get_dist(rt, gm_vec_add(t.v[0], gm_vec_alp_mult(t.v[1], ro)));
+		ro += ds.ro;
+		if ((ro + 0.01) >= MAX_DIST || ds.ro < SURF_DIST)
+			break ;
+	}
+	if (ds.id == -1 || ro + SURF_DIST >= MAX_DIST)
+		return (gm_init_int(BG_COLOR >> 24 & 0xFF, BG_COLOR >> 16 & 0xFF,
+				BG_COLOR >> 8 & 0xFF, BG_COLOR & 0xFF));
+	t.v[2] = gm_init_float(ro, ds.id, 0, 0);
+	return (get_pixel_color(rt, t, ds.obj));
+}
 
 t_int4	trace_ray(t_rt *rt, t_mat4 t)
 {
@@ -52,8 +122,11 @@ void	calc(t_rt *rt)
 					(float)(x * (rt->cnv.v[0] / rt->scr.v[0]) + rt->o.v[0]),
 					(float)(y * (rt->cnv.v[1] / rt->scr.v[1]) + rt->o.v[1]),
 					rt->cnv.v[2] + rt->o.v[2], 0), rt->o);
-			d = gm_mat_pnt_mult(d, rt->t);
-			color = trace_ray(rt, gm_mat_create(rt->o, d,
+			d = gm_vec_normalize(gm_mat_pnt_mult(d, rt->t));
+//			color = trace_ray(rt, gm_mat_create(rt->o, d,
+//					gm_init_float(0, 0, 0, 0),
+//					gm_init_float(1, INF, REC_DEPTH, -1)));
+			color = ray_march(rt, gm_mat_create(rt->o, d,
 					gm_init_float(0, 0, 0, 0),
 					gm_init_float(1, INF, REC_DEPTH, -1)));
 			draw_point(rt, rt->scr.v[2] + x,
@@ -83,6 +156,6 @@ int		main(int argc, char *argv[])
 		mlx_loop(rt.mlx.mlx);
 	}
 	else
-		ft_putstr("usage: need config file.\n");
+		ft_putstr("usage: need one config file.\n");
 	return (0);
 }

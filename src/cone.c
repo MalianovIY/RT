@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "rt.h"
+#include "../includes/rt.h"
 
 t_cone		init_cone(t_int4 id, t_float4 center, t_float4 norm, t_float4 data)
 {

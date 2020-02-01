@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "rt.h"
+#include "../includes/rt.h"
 
 t_sphere	init_sphere(t_int4 id, t_float4 data, t_float4 center)
 {

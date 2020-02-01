@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "rt.h"
+#include "../includes/rt.h"
 
 t_plane		init_plane(t_int4 id, t_float4 point, t_float4 norm, t_float4 data)
 {
